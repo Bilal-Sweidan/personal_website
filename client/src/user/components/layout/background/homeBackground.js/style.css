@@ -1,0 +1,8 @@
+.home-page-background-1 svg {
+    color: #eee;
+    font-size: 3rem;
+}
+
+.home-page-background-1 svg:hover {
+    color: white;
+}

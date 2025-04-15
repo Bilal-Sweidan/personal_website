@@ -1,0 +1,13 @@
+.pointer{
+    cursor: pointer;
+}
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.around{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
