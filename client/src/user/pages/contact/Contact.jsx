@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { 
@@ -15,6 +15,8 @@ import {
     faInstagram
 } from '@fortawesome/free-brands-svg-icons';
 
+// Add icons to library
+library.add(faEnvelope, faPhone, faLocationDot, faPaperPlane, faGithub, faLinkedin, faTwitter, faInstagram);
 
 // css file
 import './style.css';
@@ -28,6 +30,19 @@ const Contact = () => {
     });
 
     const [focusedField, setFocusedField] = useState(null);
+
+    useEffect(() => {
+        const elements = document.querySelectorAll('.info-card, .contact-form-container');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        elements.forEach(element => observer.observe(element));
+    }, []);
 
     const handleChange = (e) => {
         setFormData({
@@ -115,9 +130,10 @@ const Contact = () => {
                                     onFocus={() => setFocusedField('name')}
                                     onBlur={() => setFocusedField(null)}
                                     required
+                                    placeholder=" "
                                     className={focusedField === 'name' ? 'focused' : ''}
                                 />
-                                <label className={formData.name ? 'active' : ''}>Name</label>
+                                <label>Name</label>
                             </div>
 
                             <div className="form-group">
@@ -129,9 +145,10 @@ const Contact = () => {
                                     onFocus={() => setFocusedField('email')}
                                     onBlur={() => setFocusedField(null)}
                                     required
+                                    placeholder=" "
                                     className={focusedField === 'email' ? 'focused' : ''}
                                 />
-                                <label className={formData.email ? 'active' : ''}>Email</label>
+                                <label>Email</label>
                             </div>
 
                             <div className="form-group">
@@ -143,9 +160,10 @@ const Contact = () => {
                                     onFocus={() => setFocusedField('subject')}
                                     onBlur={() => setFocusedField(null)}
                                     required
+                                    placeholder=" "
                                     className={focusedField === 'subject' ? 'focused' : ''}
                                 />
-                                <label className={formData.subject ? 'active' : ''}>Subject</label>
+                                <label>Subject</label>
                             </div>
 
                             <div className="form-group">
@@ -156,14 +174,15 @@ const Contact = () => {
                                     onFocus={() => setFocusedField('message')}
                                     onBlur={() => setFocusedField(null)}
                                     required
+                                    placeholder=" "
                                     className={focusedField === 'message' ? 'focused' : ''}
                                 ></textarea>
-                                <label className={formData.message ? 'active' : ''}>Message</label>
+                                <label>Message</label>
                             </div>
 
                             <button type="submit" className="submit-btn">
-                                <span>Send Message</span>
-                                <FontAwesomeIcon icon="paper-plane" />
+                                Send Message
+                                <FontAwesomeIcon icon="paper-plane" className="ms-2" />
                             </button>
                         </form>
                     </div>

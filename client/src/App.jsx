@@ -5,6 +5,9 @@ import { MainPage } from "./user/pages"
 import { Home } from "./user/pages/home"
 import { About } from "./user/pages/about"
 import { Contact } from "./user/pages/contact"
+import { Services } from "./user/pages/service"
+import { Projects } from "./user/pages/projects"
+
 // import css
 import "./App.css"
 
@@ -24,6 +27,14 @@ const router = createBrowserRouter([
       {
         path : "contact",
         element : <Contact />
+      },
+      {
+        path : 'services',
+        element : <Services />
+      },
+      {
+        path : "projects",
+        element : <Projects />
       }
     ]
   }

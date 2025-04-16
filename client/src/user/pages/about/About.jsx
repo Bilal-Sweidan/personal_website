@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { 
@@ -9,9 +9,27 @@ import {
     faMobile, 
     faGlobe 
 } from '@fortawesome/free-solid-svg-icons';
+
+// Add icons to library
+library.add(faCode, faPalette, faDatabase, faServer, faMobile, faGlobe);
+
+// css file
 import './style.css';
 
 const About = () => {
+    useEffect(() => {
+        const elements = document.querySelectorAll('.profile-card, .skill-category, .timeline-item');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        elements.forEach(element => observer.observe(element));
+    }, []);
+
     return (
         <div className="about-page">
             <div className="background-container">
@@ -53,7 +71,7 @@ const About = () => {
                     <div className="skills-grid">
                         <div className="skill-category">
                             <div className="skill-icon">
-                                <FontAwesomeIcon icon="code" />
+                                <FontAwesomeIcon icon={faCode} />
                             </div>
                             <h4>Frontend</h4>
                             <ul>
@@ -65,7 +83,7 @@ const About = () => {
                         </div>
                         <div className="skill-category">
                             <div className="skill-icon">
-                                <FontAwesomeIcon icon="server" />
+                                <FontAwesomeIcon icon={faServer} />
                             </div>
                             <h4>Backend</h4>
                             <ul>
@@ -77,7 +95,7 @@ const About = () => {
                         </div>
                         <div className="skill-category">
                             <div className="skill-icon">
-                                <FontAwesomeIcon icon="database" />
+                                <FontAwesomeIcon icon={faDatabase} />
                             </div>
                             <h4>Database</h4>
                             <ul>
@@ -89,7 +107,7 @@ const About = () => {
                         </div>
                         <div className="skill-category">
                             <div className="skill-icon">
-                                <FontAwesomeIcon icon="palette" />
+                                <FontAwesomeIcon icon={faPalette} />
                             </div>
                             <h4>Design</h4>
                             <ul>
