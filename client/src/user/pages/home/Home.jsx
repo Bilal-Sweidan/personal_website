@@ -8,6 +8,17 @@ import polygonBg from '../../../assets/page-turner-3.png'
 import './style.css'
 
 export default function Home() {
+    const handleDownloadCV = () => {
+        // Replace with your actual CV file path
+        const cvUrl = '/path-to-your-cv.pdf';
+        const link = document.createElement('a');
+        link.href = cvUrl;
+        link.download = 'Bilal_Sweidan_CV.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     return (
         <main className='home-page text-light w-100 position-relative d-flex flex-column flex-lg-row align-items-center justify-content-center'
             style={{
@@ -32,6 +43,13 @@ export default function Home() {
                     <div className='mt-4 d-flex flex-wrap justify-content-center gap-3'>
                         <button className='btn btn-outline-success'>Explore My Work</button>
                         <button className='btn btn-success'>Let's Connect</button>
+                        <button 
+                            className='btn cv-download-btn'
+                            onClick={handleDownloadCV}
+                        >
+                            <i className="fas fa-file-alt"></i>
+                            Discover My Journey
+                        </button>
                     </div>
                 </div>
             </div>

@@ -7,9 +7,12 @@ import { About } from "./user/pages/about"
 import { Contact } from "./user/pages/contact"
 import { Services } from "./user/pages/service"
 import { Projects } from "./user/pages/projects"
+import { ProjectsDetails } from "./user/pages/projectsDetails"
+import { Login } from "./user/pages/login"
 
 // import css
 import "./App.css"
+import { Admin } from "./admin/pages"
 
 const router = createBrowserRouter([
   {
@@ -37,6 +40,14 @@ const router = createBrowserRouter([
         element : <Projects />
       }
     ]
+  },
+  {
+    path : "/login",
+    element: <Login />
+  },
+  {
+    path: "/admin",
+    element: <Admin />
   }
 ])
 
