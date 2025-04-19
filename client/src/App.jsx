@@ -9,10 +9,12 @@ import { Services } from "./user/pages/service"
 import { Projects } from "./user/pages/projects"
 import { ProjectsDetails } from "./user/pages/projectsDetails"
 import { Login } from "./user/pages/login"
-
+import { Admin } from "./admin/pages"
+import { Overview } from "./admin/pages/overview"
+// admin 
+import { Projects as AdminProjectsPage } from "./admin/pages/projects"
 // import css
 import "./App.css"
-import { Admin } from "./admin/pages"
 
 const router = createBrowserRouter([
   {
@@ -47,7 +49,18 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <Admin />
+    element: <Admin />,
+    children: [
+      {
+        path: "",
+        element: <Overview />,
+        index: true
+      },
+      {
+        path: 'projects',
+        element: <AdminProjectsPage />
+      }
+    ]
   }
 ])
 
