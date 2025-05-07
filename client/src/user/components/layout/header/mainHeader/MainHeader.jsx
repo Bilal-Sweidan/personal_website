@@ -34,7 +34,7 @@ const MainHeader = () => {
             </button>
 
             <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-                <ul className="d-flex align-items-center gap-5 list-unstyled mb-0 text-capitalize">
+                <ul className="d-flex align-items-center gap-3 list-unstyled mb-0 text-capitalize">
                     <li>
                         <Link to="" className="text-decoration-none text-white" onClick={() => setIsMenuOpen(false)}>Home</Link>
                     </li>
@@ -42,13 +42,16 @@ const MainHeader = () => {
                         <Link to="about" className="text-decoration-none text-white" onClick={() => setIsMenuOpen(false)}>About</Link>
                     </li>
                     <li>
-                        <Link to="contact" className="text-decoration-none text-white" onClick={() => setIsMenuOpen(false)}>Contact</Link>
-                    </li>
-                    <li>
                         <Link to="services" className="text-decoration-none text-white" onClick={() => setIsMenuOpen(false)}>Services</Link>
                     </li>
                     <li>
                         <Link to="projects" className="text-decoration-none text-white" onClick={() => setIsMenuOpen(false)}>projects</Link>
+                    </li>
+                    <li>
+                        <Link to="blog" className="text-decoration-none text-white" onClick={() => setIsMenuOpen(false)}>my blog</Link>
+                    </li>
+                    <li>
+                        <Link to="contact" className="text-decoration-none text-white" onClick={() => setIsMenuOpen(false)}>Contact</Link>
                     </li>
                 </ul>
             </div>

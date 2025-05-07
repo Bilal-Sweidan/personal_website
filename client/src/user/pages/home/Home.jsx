@@ -1,16 +1,12 @@
-import React from 'react'
-// components
-import { HomeBackground } from "../../components/layout/background"
 // IMAGE
-import polygonBg from '../../../assets/page-turner-3.png'
-// import polygonBg from '../../../assets/endless-constellation-2.png'
+import polygonBg from '../../../assets/page-turner_2.png'
 // CSS
 import './style.css'
 
 export default function Home() {
     const handleDownloadCV = () => {
         // Replace with your actual CV file path
-        const cvUrl = '/path-to-your-cv.pdf';
+        const cvUrl = 'http://localhost:3000/uploads/pdf/Bilal_Sweidan_CV_Updated%20(1).pdf';
         const link = document.createElement('a');
         link.href = cvUrl;
         link.download = 'Bilal_Sweidan_CV.pdf';
@@ -20,7 +16,7 @@ export default function Home() {
     };
 
     return (
-        <main className='home-page text-light w-100 position-relative d-flex flex-column flex-lg-row align-items-center justify-content-center'
+        <main className='user-home-page text-light w-100 position-relative d-flex flex-column flex-lg-row align-items-center justify-content-center'
             style={{
                 backgroundColor: "#1E2022",
                 backgroundImage: `url(${polygonBg})`,
@@ -32,18 +28,19 @@ export default function Home() {
             }}
         >
             <div className='home-page-content position-relative col-12 col-lg-5'>
-                <div className='content-wrapper'>
+                <div className='content-wrapper-text'>
                     <h1>Bilal Sweidan</h1>
                     <h4>Creative Developer</h4>
-                    <p>Welcome to my digital space! I'm passionate about creating 
-                        innovative solutions that blend technology and creativity. 
-                        With years of experience in digital development, I help 
+                    <p>
+                        Welcome to my digital space! I'm passionate about creating
+                        innovative solutions that blend technology and creativity.
+                        With years of experience in digital development, I help
                         bring ideas to life through code and design.
                     </p>
                     <div className='mt-4 d-flex flex-wrap justify-content-center gap-3'>
                         <button className='btn btn-outline-success'>Explore My Work</button>
                         <button className='btn btn-success'>Let's Connect</button>
-                        <button 
+                        <button
                             className='btn cv-download-btn'
                             onClick={handleDownloadCV}
                         >

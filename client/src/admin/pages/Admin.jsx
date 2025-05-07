@@ -1,6 +1,8 @@
 import { Outlet } from 'react-router-dom';
-import { Header, Sidebar } from '../components';
+import { Sidebar } from '../components/layout';
+import { Header } from '../components/layout/header';
 import './style.css';
+import { PathTrackHeader } from '../components/features/pathTrackHeader';
 
 const Admin = () => {
     return (
@@ -9,6 +11,7 @@ const Admin = () => {
             <div className="main-content">
                 <Header />
                 <div className="content-wrapper">
+                    <PathTrackHeader />
                     <Outlet />
                 </div>
             </div>

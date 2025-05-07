@@ -13,15 +13,22 @@ const projectsSchema = new mongoose.Schema({
         type : String,
         required : true
     },
-    link : {
+    liveDemo : {
         type : String,
         required : true
+    },
+    github: {
+        type: String,
     },
     technologies : {
         type : [String],
         required : true
     },
-    category : {
+    department : {
+        type : String,
+        // required : true
+    },
+    status : {
         type : String,
         required : true
     },

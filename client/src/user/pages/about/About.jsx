@@ -55,8 +55,8 @@ const About = () => {
                                 <div className="image-overlay"></div>
                             </div>
                         </div>
-                        <div className="profile-info">
-                            <h2>About Me</h2>
+                        <div className="profile-info d-block">
+                            <h2 className='text-primary'>About Me</h2>
                             <p className="tagline">Full Stack Developer & Designer</p>
                             <p className="description">
                                 I'm a passionate developer with expertise in creating modern web applications.
@@ -75,10 +75,11 @@ const About = () => {
                             </div>
                             <h4>Frontend</h4>
                             <ul>
-                                <li>React</li>
-                                <li>JavaScript</li>
-                                <li>HTML5</li>
                                 <li>CSS3</li>
+                                <li>sass</li>
+                                <li>bootstrap</li>
+                                <li>JavaScript</li>
+                                <li>React</li>
                             </ul>
                         </div>
                         <div className="skill-category">
@@ -89,8 +90,6 @@ const About = () => {
                             <ul>
                                 <li>Node.js</li>
                                 <li>Express</li>
-                                <li>Python</li>
-                                <li>Java</li>
                             </ul>
                         </div>
                         <div className="skill-category">
@@ -100,9 +99,8 @@ const About = () => {
                             <h4>Database</h4>
                             <ul>
                                 <li>MongoDB</li>
-                                <li>MySQL</li>
-                                <li>PostgreSQL</li>
-                                <li>Redis</li>
+                                <li>SQLite</li>
+                                <li>SQL</li>
                             </ul>
                         </div>
                         <div className="skill-category">
@@ -125,9 +123,19 @@ const About = () => {
                     <div className="timeline">
                         <div className="timeline-item">
                             <div className="timeline-content">
-                                <h4>Senior Developer</h4>
-                                <p className="company">Tech Company</p>
-                                <p className="duration">2020 - Present</p>
+                                <h4>Front-End Developer</h4>
+                                <p className="company">Freelancer</p>
+                                <p className="duration">2021 - Present</p>
+                                <p className="description">
+                                    Leading development teams and implementing modern web solutions.
+                                </p>
+                            </div>
+                        </div>
+                        <div className="timeline-item">
+                            <div className="timeline-content">
+                                <h4>Back-End Developer</h4>
+                                <p className="company">Freelancer</p>
+                                <p className="duration">2022 - Present</p>
                                 <p className="description">
                                     Leading development teams and implementing modern web solutions.
                                 </p>
@@ -137,9 +145,19 @@ const About = () => {
                             <div className="timeline-content">
                                 <h4>Full Stack Developer</h4>
                                 <p className="company">Startup Inc</p>
-                                <p className="duration">2018 - 2020</p>
+                                <p className="duration">2022 - present</p>
                                 <p className="description">
                                     Developed and maintained web applications using modern technologies.
+                                </p>
+                            </div>
+                        </div>
+                        <div className="timeline-item">
+                            <div className="timeline-content">
+                                <h4>Team Leader</h4>
+                                <p className="company">AP Team</p>
+                                <p className="duration">2024 - present</p>
+                                <p className="description">
+                                    Developer and leader in technical Team.
                                 </p>
                             </div>
                         </div>

@@ -1,25 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-    faUser, 
-    faLock, 
-    faEye, 
-    faEyeSlash 
+import {
+    faUser,
+    faLock,
+    faEye,
+    faEyeSlash
 } from '@fortawesome/free-solid-svg-icons';
 
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import './style.css';
 
+// context
+import authContext from '../../../context/authContext';
+
+// auth api
+import auth from '../../../api/auth';
+
 const Login = () => {
+    // context
+    const { setUser } = useContext(authContext.AuthContext);
+
+    // navigate
     const navigate = useNavigate();
+
+    // form data
     const [formData, setFormData] = useState({
         username: '',
         password: ''
     });
+
+    // show password
     const [showPassword, setShowPassword] = useState(false);
+
+    // errors
     const [errors, setErrors] = useState({});
+
+    // is loading
     const [isLoading, setIsLoading] = useState(false);
 
+    // login mutation
+    const queryClient = useQueryClient()
+    const loginMutation = useMutation({
+        mutationKey: ["admin"],
+        mutationFn: () => auth.login(formData.username, formData.password),
+        onSuccess: (data) => {
+            console.log(data);
+            setUser(data.data.user);
+            queryClient.invalidateQueries(["currentUser"]);
+            setTimeout(() => navigate("/admin"), 1000);
+        },
+        onError: (err) => {
+            alert(err.response.data.message);
+        },
+    });
+    // handle change
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({
@@ -34,6 +69,7 @@ const Login = () => {
         }
     };
 
+    // validate form
     const validateForm = () => {
         const newErrors = {};
         if (!formData.username) {
@@ -46,20 +82,14 @@ const Login = () => {
         return Object.keys(newErrors).length === 0;
     };
 
+    // handle submit
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (validateForm()) {
             setIsLoading(true);
-            try {
-                // Simulate API call
-                await new Promise(resolve => setTimeout(resolve, 1500));
-                // Navigate to dashboard or home page after successful login
-                navigate('/');
-            } catch (error) {
-                setErrors({ submit: 'Login failed. Please try again.' });
-            } finally {
-                setIsLoading(false);
-            }
+            const data = loginMutation.mutate();
+            setIsLoading(false);
+        
         }
     };
 
@@ -99,8 +129,8 @@ const Login = () => {
                                     onChange={handleChange}
                                     className={errors.password ? 'error' : ''}
                                 />
-                                <FontAwesomeIcon 
-                                    icon={showPassword ? faEyeSlash : faEye} 
+                                <FontAwesomeIcon
+                                    icon={showPassword ? faEyeSlash : faEye}
                                     className="password-toggle"
                                     onClick={() => setShowPassword(!showPassword)}
                                 />
@@ -125,8 +155,8 @@ const Login = () => {
                             </div>
                         )}
 
-                        <button 
-                            type="submit" 
+                        <button
+                            type="submit"
                             className="login-button"
                             disabled={isLoading}
                         >

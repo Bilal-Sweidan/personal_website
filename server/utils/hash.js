@@ -1,7 +1,8 @@
 const bcryptjs = require('bcryptjs')
 
 const hash = async (password) => {
-    const hashed = bcryptjs.hashSync(password, 20)
+    const salt = await bcryptjs.genSalt(10)
+    const hashed = bcryptjs.hashSync(password, salt)
     return hashed
 }
 

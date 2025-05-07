@@ -19,7 +19,7 @@
     background-color: rgba(255, 255, 255, 0.2) !important;
 }
 
-.home-page {
+.user-home-page {
     min-height: 100vh;
     width: 100%;
     position: relative;
@@ -120,12 +120,12 @@
     gap: 2rem;
 }
 
-.content-wrapper {
+.content-wrapper-text {
     text-align: center;
     color: #ffffff;
 }
 
-.content-wrapper h1 {
+.content-wrapper-text h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
     background: linear-gradient(45deg, #007bff, #00bcd4);
@@ -134,13 +134,13 @@
     animation: textGlow 3s ease-in-out infinite;
 }
 
-.content-wrapper h4 {
+.content-wrapper-text h4 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: rgba(255, 255, 255, 0.8);
 }
 
-.content-wrapper p {
+.content-wrapper-text p {
     font-size: 1.1rem;
     color: rgba(255, 255, 255, 0.7);
     max-width: 600px;
@@ -392,7 +392,7 @@
 }
 
 @media (max-width: 992px) {
-    .home-page {
+    .user-home-page {
         flex-direction: column;
         height: auto;
         min-height: 100vh;
@@ -405,13 +405,13 @@
         margin-top: 0;
     }
 
-    .content-wrapper {
+    .content-wrapper-text {
         text-align: center;
         margin: 0 auto;
         padding: 0 1rem;
     }
 
-    .content-wrapper p {
+    .content-wrapper-text p {
         margin: 0 auto;
     }
 
@@ -428,7 +428,7 @@
 }
 
 @media (max-width: 768px) {
-    .home-page {
+    .user-home-page {
         padding-top: 80px;
     }
 
@@ -436,15 +436,15 @@
         padding: 1rem;
     }
 
-    .content-wrapper h1 {
+    .content-wrapper-text h1 {
         font-size: 2.5rem;
     }
 
-    .content-wrapper h4 {
+    .content-wrapper-text h4 {
         font-size: 1.2rem;
     }
 
-    .content-wrapper p {
+    .content-wrapper-text p {
         font-size: 1rem;
     }
 
@@ -474,19 +474,19 @@
 }
 
 @media (max-width: 576px) {
-    .home-page {
+    .user-home-page {
         padding-top: 70px;
     }
 
-    .content-wrapper h1 {
+    .content-wrapper-text h1 {
         font-size: 2rem;
     }
 
-    .content-wrapper h4 {
+    .content-wrapper-text h4 {
         font-size: 1.1rem;
     }
 
-    .content-wrapper p {
+    .content-wrapper-text p {
         font-size: 0.9rem;
     }
 

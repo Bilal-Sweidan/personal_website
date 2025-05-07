@@ -35,14 +35,11 @@ userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) return next()
 
     try {
-        // Generate a salt
-        const salt = await bcrypt.genSalt(10)
-        // Hash the password with the salt
         this.password = await hash(this.password)
         next()
     } catch (error) {
         next(error)
     }
 })
-
-module.exports = mongoose.model('User', userSchema)  
+const User = mongoose.model('User', userSchema)
+module.exports = User
