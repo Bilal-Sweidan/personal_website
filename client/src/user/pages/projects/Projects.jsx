@@ -19,7 +19,11 @@ import './style.css'
 import useProject from '../../../hooks/useProject';
 
 const Projects = () => {
-    const { projects } = useProject()
+    const { projects , isLoading } = useProject()
+    console.log(projects)
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
+    console.log(BACKEND_URL)
+
     useEffect(() => {
         const elements = document.querySelectorAll('.project-card, .filter-btn, .section-title');
         const observer = new IntersectionObserver((entries) => {
@@ -32,63 +36,6 @@ const Projects = () => {
 
         elements.forEach(element => observer.observe(element));
     }, []);
-
-    // const projects = [
-    //     {
-    //         id: 1,
-    //         title: "E-Commerce Platform",
-    //         description: "A full-stack e-commerce platform with advanced features like real-time inventory management, payment processing, and analytics dashboard.",
-    //         image: "https://images.unsplash.com/photo-1556741533-6e6a62bd8b49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    //         tags: ["React", "Node.js", "MongoDB", "Express"],
-    //         category: "web",
-    //         link: "#"
-    //     },
-    //     {
-    //         id: 2,
-    //         title: "Mobile Fitness App",
-    //         description: "A cross-platform mobile application for fitness tracking, workout planning, and nutrition management with social features.",
-    //         image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    //         tags: ["React Native", "Firebase", "Redux"],
-    //         category: "mobile",
-    //         link: "#"
-    //     },
-    //     {
-    //         id: 3,
-    //         title: "AI-Powered Analytics Dashboard",
-    //         description: "A business intelligence platform with machine learning capabilities for predictive analytics and data visualization.",
-    //         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    //         tags: ["Python", "TensorFlow", "React", "D3.js"],
-    //         category: "ai",
-    //         link: "#2"
-    //     },
-    //     {
-    //         id: 4,
-    //         title: "Cloud Infrastructure Management",
-    //         description: "A cloud management platform for automated deployment, scaling, and monitoring of cloud resources.",
-    //         image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    //         tags: ["AWS", "Terraform", "Kubernetes", "Docker"],
-    //         category: "cloud",
-    //         link: "#"
-    //     },
-    //     {
-    //         id: 5,
-    //         title: "UI/UX Design System",
-    //         description: "A comprehensive design system with reusable components, documentation, and accessibility guidelines.",
-    //         image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    //         tags: ["Figma", "Storybook", "React", "Styled Components"],
-    //         category: "design",
-    //         link: "#"
-    //     },
-    //     {
-    //         id: 6,
-    //         title: "Blockchain Wallet",
-    //         description: "A secure cryptocurrency wallet with multi-chain support and advanced security features.",
-    //         image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    //         tags: ["Solidity", "Web3.js", "React", "Ethereum"],
-    //         category: "blockchain",
-    //         link: "#"
-    //     }
-    // ];
 
     return (
         <div className="projects-page">
@@ -123,10 +70,11 @@ const Projects = () => {
                 </div> */}
 
                 <div className="projects-grid">
-                    {projects?.map(project => (
+                    {
+                    isLoading ? "loading" : projects?.map(project => (
                         <div key={project._id} className="project-card" data-category='All'>
                             <div className="project-image">
-                                <img src={"http://localhost:3000/uploads/images/" + project.image} alt={project.title} />
+                                <img src={BACKEND_URL + "/uploads/images/" + project.image} alt={project.title} />
                                 <div className="project-overlay">
                                     <div className="project-tags">
                                         {project?.technologies?.map((tag, index) => (

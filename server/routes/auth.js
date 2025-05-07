@@ -13,7 +13,7 @@ const { compare } = require('../utils/hash')
 router.get('/current-user', async (req, res) => {
     try {
         const token = req.cookies.token
-        console.log("cookies current-user : ",token);
+        console.log("cookies current-user : ", token);
         if (!token) {
             return res.status(401).json({ msg: "unauthorized" })
         }
@@ -34,7 +34,9 @@ router.post('/login', async (req, res) => {
         }
         if (compare(password, admin.password)) {
             const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, { expiresIn: "1d" })
-            res.cookie('token', token, { 
+            res.cookie('token', token, {
+                secure: true, // required if using HTTPS (Render forces HTTPS)
+                sameSite: 'None', // IMPORTANT if frontend is on a different domain
                 maxAge: 1000 * 60 * 60 * 24,
             })
             req.admin = admin
@@ -46,14 +48,14 @@ router.post('/login', async (req, res) => {
         // console.log(err.message)
         res.status(500).json({ msg: err.message })
     }
-    console.log("cookies login : ",req.cookies);
+    console.log("cookies login : ", req.cookies);
 })
 
 // logout
 router.post('/logout', async (req, res) => {
     try {
         // res.clearCookie('token')
-        console.log("logout : " , true);
+        console.log("logout : ", true);
         res.clearCookie('token').status(200).json({ msg: "logout success" })
     } catch (err) {
         res.status(500).json({ msg: err.message })

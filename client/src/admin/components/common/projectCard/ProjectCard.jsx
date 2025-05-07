@@ -5,11 +5,14 @@ import styles from './style.module.css';
 import useProject from '../../../../hooks/useProject';
 const ProjectCard = ({ data }) => {
     const { deleteProject } = useProject()
-    const { _id , title, description, technologies, github, liveDemo, image } = data;
+    const { _id, title, description, technologies, github, liveDemo, image } = data;
+
+    // back end url
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
     return (
         <div className={styles.adminProjectCard}>
             <div className={styles.projectImage}>
-                <img src={'http://localhost:3000/uploads/images/' + image} alt={title} />
+                <img src={BACKEND_URL + '/uploads/images/' + image} alt={title} />
                 <div className={styles.projectActions}>
                     <button
                         className={`${styles.actionBtn} ${styles.live}`}
