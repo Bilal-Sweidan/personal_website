@@ -56,7 +56,10 @@ router.post('/logout', async (req, res) => {
     try {
         // res.clearCookie('token')
         console.log("logout : ", true);
-        res.clearCookie('token').status(200).json({ msg: "logout success" })
+        res.clearCookie('token', {
+            secure: true, // required if using HTTPS (Render forces HTTPS)
+            sameSite: 'None', // IMPORTANT if frontend is on a different domain
+        }).status(200).json({ msg: "logout success" })
     } catch (err) {
         res.status(500).json({ msg: err.message })
     }

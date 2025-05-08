@@ -4,9 +4,10 @@ import polygonBg from '../../../assets/page-turner_2.png'
 import './style.css'
 
 export default function Home() {
+    const backendUrl = import.meta.env.VITE_BACKEND_URL
     const handleDownloadCV = () => {
         // Replace with your actual CV file path
-        const cvUrl = 'http://localhost:3000/uploads/pdf/Bilal_Sweidan_CV_Updated%20(1).pdf';
+        const cvUrl = backendUrl + '/uploads/pdf/Bilal_Sweidan_CV_Updated%20(1).pdf';
         const link = document.createElement('a');
         link.href = cvUrl;
         link.download = 'Bilal_Sweidan_CV.pdf';
