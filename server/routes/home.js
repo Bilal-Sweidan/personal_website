@@ -9,7 +9,6 @@ const { compare } = require('../utils/hash')
 
 router.get('/', async (req, res) => {
     res.send('Hello World')
-
 })
 
 

@@ -46,8 +46,10 @@ router.post('/projects', adminAuthentication, upload.single('image'), async (req
 router.get('/projects', async (req, res) => {
     try {
         const projects = await Project.find()
+        console.log('projects: ',projects)
         res.status(200).json(projects)
     } catch (error) {
+        console.log('error: ',error)
         res.status(500).json({ error: 'Failed to fetch projects' })
     }
 })
