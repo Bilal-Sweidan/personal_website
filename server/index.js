@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
-const env = require('dotenv').config({path : '../.env'})
+const env = require('dotenv').config()
 // app config
 const app = express()
 app.use(express.json())

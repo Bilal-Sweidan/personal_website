@@ -514,43 +514,43 @@
 }
 
 .btn-outline-success {
-    border: 2px solid #2EA043 !important;
-    color: #2EA043 !important;
+    border: 2px solid rgb(0 109 179) !important;
+    color: white !important;
     background: transparent !important;
 }
 
 .btn-outline-success:hover {
-    background: rgba(46, 160, 67, 0.1) !important;
-    color: #38d157 !important;
-    border-color: #38d157 !important;
+    background: rgb(0 109 179) !important;
+    color: rgb(0 109 179) !important;
+    border-color: rgb(0 109 179) !important;
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(46, 160, 67, 0.4);
 }
 
 .btn-success {
-    background: linear-gradient(45deg, #2EA043, #38d157) !important;
+    background: linear-gradient(45deg, rgb(0 109 179), rgb(0 109 179)) !important;
     border: none !important;
     color: white !important;
 }
 
 .btn-success:hover {
-    background: linear-gradient(45deg, #38d157, #2EA043) !important;
+    background: linear-gradient(45deg, rgb(0 109 179), rgb(0 109 179)) !important;
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(46, 160, 67, 0.4);
 }
 
 .btn-outline-primary {
-    border: 2px solid #2EA043 !important;
-    color: #2EA043 !important;
+    border: 2px solid rgb(0 109 179) !important;
+    color: rgb(0 109 179) !important;
     background: transparent !important;
 }
 
 .btn-outline-primary:hover {
     background: rgba(46, 160, 67, 0.1) !important;
-    color: #38d157 !important;
-    border-color: #38d157 !important;
+    color: rgb(0 109 179) !important;
+    border-color: rgb(0 109 179) !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(46, 160, 67, 0.4);
+    box-shadow: 0 4px 15px rgb(0 109 179);
 }
 
 .btn i {
@@ -564,8 +564,8 @@
 .cv-download-btn {
     position: relative;
     background: transparent !important;
-    border: 2px solid #2EA043 !important;
-    color: #2EA043 !important;
+    border: 2px solid rgb(0 109 179) !important;
+    color: rgb(0 109 179) !important;
     padding: 0.75rem 2rem !important;
     border-radius: 50px !important;
     font-weight: 600 !important;
@@ -583,7 +583,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #2EA043;
+    background: rgb(0 109 179);
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -592,9 +592,9 @@
 
 .cv-download-btn:hover {
     color: white !important;
-    border-color: #2EA043 !important;
+    border-color: rgb(0 109 179) !important;
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(46, 160, 67, 0.2);
+    box-shadow: 0 10px 20px rgb(0 109 179);
 }
 
 .cv-download-btn:hover::before {
