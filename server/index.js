@@ -19,7 +19,7 @@ app.use(session({
     }
 }))
 app.use(cors({
-    origin : ['http://localhost:5173',"https://bilal-sweidan.onrender.com"],
+    origin : ['http://localhost:5173',"https://bilal-sweidan.onrender.com","https://bilal-sweidan.netlify.app"],
     credentials: true
 }))
 // import routes
