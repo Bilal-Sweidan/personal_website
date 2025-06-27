@@ -27,4 +27,6 @@ const contactMessageSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('ContactMessage', contactMessageSchema)
+
+const ContactMessage = mongoose.model('ContactMessage', contactMessageSchema)
+module.exports = ContactMessage

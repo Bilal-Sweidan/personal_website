@@ -29,7 +29,6 @@ import authContext from "./context/authContext"
 // query client
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-const queryClient = new QueryClient()
 
 // protected routes
 const AdminProtected = ({ children }) => {
@@ -39,7 +38,7 @@ const AdminProtected = ({ children }) => {
     return null
   }
   if (!user) {
-    return <Navigate to="/login" />
+    return <Navigate to="/" />
   }
   return children
 }
@@ -139,6 +138,8 @@ const router = createBrowserRouter([
 
 
 function App() {
+  const queryClient = new QueryClient()
+
   return (
     <QueryClientProvider client={queryClient}>
       <authContext.AuthProvider>

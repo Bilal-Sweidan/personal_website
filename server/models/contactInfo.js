@@ -13,7 +13,7 @@ const contactInfoSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    relatedLinks: {
+    links: {
         type: [{
             name: {
                 type: String,
@@ -25,7 +25,6 @@ const contactInfoSchema = new mongoose.Schema({
             },
             icon: {
                 type: String,
-                required: true
             }
         }],
         required: true

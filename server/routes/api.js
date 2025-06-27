@@ -46,10 +46,10 @@ router.post('/projects', adminAuthentication, upload.single('image'), async (req
 router.get('/projects', async (req, res) => {
     try {
         const projects = await Project.find()
-        console.log('projects: ',projects)
+        console.log('projects: ', projects)
         res.status(200).json(projects)
     } catch (error) {
-        console.log('error: ',error)
+        console.log('error: ', error)
         res.status(500).json({ error: 'Failed to fetch projects' })
     }
 })
@@ -74,6 +74,64 @@ router.put('/projects/:id', adminAuthentication, async (req, res) => {
         res.status(200).json({ msg: 'Project updated successfully', project: updatedProject })
     } catch (error) {
         res.status(500).json({ error: 'Failed to update project' })
+    }
+})
+
+
+
+/* contact routes */
+const { sendEmail } = require('../utils/nodemailer')
+// database
+const ContactMessages = require('../models/contactMessage')
+
+router.post('/message', async (req, res) => {
+    const { name, email, subject, message } = req.body
+    try {
+        console.log(name, email, subject, message)
+        const mail = await sendEmail(name, email, subject, message)
+        console.log(mail.success)
+        if (mail.success) {
+            console.log('email has sent')
+            await ContactMessages.create({ name, email, subject, message })
+            return res.status(200).json({ msg: 'thanks for contact 🚀' })
+        }
+        return res.status(400).json({ msg: 'there is a wrong , please try again later 😢' })
+    } catch (err) {
+        console.log(err.message)
+        res.status(500)
+    }
+})
+
+
+/* contact info */
+const ContactInfo = require('../models/contactInfo')
+// async function newData() {
+//     console.log('new data in contact info ')
+//     await ContactInfo.create({
+//         email: "bilalsweidan2003@gmail.com",
+//         phone: '+963931745049',
+//         location: 'Duma, Rif Dimashq Governorate, Syria',
+//         links: [
+//             {
+//                 name: 'github',
+//                 link: "https://github.com/Bilal-Sweidan"
+//             },
+//             {
+//                 name: 'linkedin',
+//                 link: 'https://www.linkedin.com/in/bilal-sweidan-064a7a254/'
+//             }
+//         ]
+//     })
+// }
+// newData()
+router.get('/contact-info', async (req, res) => {
+    try {
+        const data = await ContactInfo.find()
+        console.log("...",data[0])
+        res.status(200).json(data[0])
+    } catch (err) {
+        console.log(err.message)
+        res.status(500).json({ msg: err.message })
     }
 })
 

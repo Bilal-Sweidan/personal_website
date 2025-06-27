@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useQuery } from "@tanstack/react-query"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { 
-    faEnvelope, 
-    faPhone, 
+import {
+    faEnvelope,
+    faPhone,
     faLocationDot,
     faPaperPlane
 } from '@fortawesome/free-solid-svg-icons';
@@ -20,6 +21,10 @@ library.add(faEnvelope, faPhone, faLocationDot, faPaperPlane, faGithub, faLinked
 
 // css file
 import './style.css';
+// api 
+// const message = require('../../../api/message')
+import message from '../../../api/message'
+import contactInfo from '../../../api/contactInfo'
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -30,6 +35,14 @@ const Contact = () => {
     });
 
     const [focusedField, setFocusedField] = useState(null);
+
+
+    /* get contact info */
+    const { data: contact } = useQuery({
+        queryKey: ['contact-info'],
+        queryFn: async () => await contactInfo.getData()
+    })
+
 
     useEffect(() => {
         const elements = document.querySelectorAll('.info-card, .contact-form-container');
@@ -51,11 +64,17 @@ const Contact = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         // Handle form submission here
+        console.log('submited')
+        const res = await message.post(formData)
+        if (res.status == 200) {
+            alert(res.data.msg)
+        }
         console.log(formData);
     };
+
 
     return (
         <div className="contact-page">
@@ -81,45 +100,46 @@ const Contact = () => {
 
                 <div className="contact-container">
                     <div className="contact-info">
-                        <div className="info-card">
+                        <div className="info-card d-flex gap-3 align-items-center">
                             <div className="icon-wrapper">
                                 <FontAwesomeIcon icon="envelope" />
                             </div>
-                            <h3>Email</h3>
-                            <p>your.email@example.com</p>
+                            <div>
+                                <h3>Email</h3>
+                                <p>{contact?.email}</p>
+                            </div>
                         </div>
-                        <div className="info-card">
+                        <div className="info-card d-flex gap-3 align-items-center">
                             <div className="icon-wrapper">
                                 <FontAwesomeIcon icon="phone" />
                             </div>
-                            <h3>Phone</h3>
-                            <p>+1 234 567 890</p>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>{contact?.phone}</p>
+                            </div>
                         </div>
-                        <div className="info-card">
+                        <div className="info-card d-flex gap-3 align-items-center ">
                             <div className="icon-wrapper">
                                 <FontAwesomeIcon icon="location-dot" />
                             </div>
-                            <h3>Location</h3>
-                            <p>City, Country</p>
+                            <div>
+                                <h3>Location</h3>
+                                <p>{contact?.location}</p>
+                            </div>
                         </div>
 
-                        <div className="social-links">
-                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+                        <div className="social-links center">
+                            <a href={contact?.links[0].link} target="_blank" rel="noopener noreferrer" className="social-icon">
                                 <FontAwesomeIcon icon={['fab', 'github']} />
                             </a>
-                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+                            <a href={contact?.links[1].link} target="_blank" rel="noopener noreferrer" className="social-icon">
                                 <FontAwesomeIcon icon={['fab', 'linkedin']} />
-                            </a>
-                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-                                <FontAwesomeIcon icon={['fab', 'twitter']} />
-                            </a>
-                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-                                <FontAwesomeIcon icon={['fab', 'instagram']} />
                             </a>
                         </div>
                     </div>
 
-                    <div className="contact-form-container">
+                    <div className="contact-form-container" >
+                        {/* style={{ height: "fit-content" }} */}
                         <form onSubmit={handleSubmit} className="contact-form">
                             <div className="form-group">
                                 <input

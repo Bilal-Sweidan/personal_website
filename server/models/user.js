@@ -17,6 +17,26 @@ const userSchema = new mongoose.Schema({
         type: Date,
         required: false
     },
+    phone: {
+        type: String,
+    },
+    location: {
+        type: String
+    },
+    links: {
+        github: {
+            type: String,
+        },
+        facebook: {
+            type: String
+        },
+        linkedin: {
+            type: String
+        },
+        docker: {
+            type: String
+        }
+    },
     createdAt: {
         type: Date,
         default: Date.now
