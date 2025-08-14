@@ -83,7 +83,14 @@ router.put('/projects/:id', adminAuthentication, async (req, res) => {
 const { sendEmail } = require('../utils/nodemailer')
 // database
 const ContactMessages = require('../models/contactMessage')
-
+router.get('/message', adminAuthentication, async (req, res) => {
+    try {
+        const messages = await ContactMessages.find()
+        res.status(200).json(messages)
+    } catch (error) {
+        res.status(500).json({ msg: error.message })
+    }
+})
 router.post('/message', async (req, res) => {
     const { name, email, subject, message } = req.body
     try {
@@ -105,29 +112,10 @@ router.post('/message', async (req, res) => {
 
 /* contact info */
 const ContactInfo = require('../models/contactInfo')
-// async function newData() {
-//     console.log('new data in contact info ')
-//     await ContactInfo.create({
-//         email: "bilalsweidan2003@gmail.com",
-//         phone: '+963931745049',
-//         location: 'Duma, Rif Dimashq Governorate, Syria',
-//         links: [
-//             {
-//                 name: 'github',
-//                 link: "https://github.com/Bilal-Sweidan"
-//             },
-//             {
-//                 name: 'linkedin',
-//                 link: 'https://www.linkedin.com/in/bilal-sweidan-064a7a254/'
-//             }
-//         ]
-//     })
-// }
-// newData()
 router.get('/contact-info', async (req, res) => {
     try {
         const data = await ContactInfo.find()
-        console.log("...",data[0])
+        console.log("...", data[0])
         res.status(200).json(data[0])
     } catch (err) {
         console.log(err.message)

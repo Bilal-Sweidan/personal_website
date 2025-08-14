@@ -34,11 +34,11 @@ const Sidebar = () => {
 
     return (
         <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
-            <div className="sidebar-header">
-                <div className="logo-container">
+            <div className="sidebar-header" style={{height : "81.6px"}}>
+                <div className={`logo-container ${isOpen ? '' : "d-none p-0"}`} >
                     <span className="logo-text">Admin Panel</span>
                 </div>
-                <button className="toggle-btn" onClick={toggleSidebar}>
+                <button className={`toggle-btn ${isOpen ? '' : "p-0"}`} onClick={toggleSidebar}>
                     <FontAwesomeIcon icon={isOpen ? faTimes : faBars} />
                 </button>
             </div>
@@ -58,8 +58,8 @@ const Sidebar = () => {
                 ))}
             </nav>
 
-            <div className="sidebar-footer">
-                <button className="logout-btn">
+            <div className={`sidebar-footer ${isOpen ? '' : "px-2"}`}>
+                <button className={`logout-btn d-flex justify-content-center`}>
                     <FontAwesomeIcon icon={faSignOutAlt} />
                     {isOpen && <span>Logout</span>}
                 </button>

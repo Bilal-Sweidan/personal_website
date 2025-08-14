@@ -11,7 +11,7 @@ import { ProjectsDetails } from "./user/pages/projectsDetails"
 import { Login } from "./user/pages/login"
 import { UserBlog } from "./user/pages/blog"
 // admin 
-import { Admin } from "./admin/pages"
+import { Admin, Messages } from "./admin/pages"
 import { Overview } from "./admin/pages/overview"
 import { Projects as AdminProjectsPage, AddingProject, ProjectsHome } from "./admin/pages/projects"
 import { Blog, BlogHome } from "./admin/pages/blog"
@@ -130,6 +130,10 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />
+      },
+      {
+        path: 'messages',
+        element: <Messages />
       }
     ]
   }

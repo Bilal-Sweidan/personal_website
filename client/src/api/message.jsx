@@ -9,6 +9,16 @@ const message = {
             console.log(err)
             throw err
         }
+    },
+    get: async () => {
+        try {
+            const res = await axiosInstance.get('/api/message', { withCredentials: true })
+            console.log(res.data)
+            return res.data
+        } catch (err) {
+            console.log(err.message)
+            throw err
+        }
     }
 }
 
