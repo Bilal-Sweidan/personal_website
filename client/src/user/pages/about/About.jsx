@@ -13,6 +13,8 @@ import {
 // Add icons to library
 library.add(faCode, faPalette, faDatabase, faServer, faMobile, faGlobe);
 
+// profile image 
+import profileImage from '../../../assets/user_images/Eng.Bilal Sweidan.png'
 // css file
 import './style.css';
 
@@ -51,7 +53,7 @@ const About = () => {
                     <div className="profile-card">
                         <div className="profile-image">
                             <div className="image-container">
-                                <img src="/path-to-your-image.jpg" alt="Profile" />
+                                <img src={profileImage} alt="Profile" />
                                 <div className="image-overlay"></div>
                             </div>
                         </div>
@@ -89,7 +91,10 @@ const About = () => {
                             <h4>Backend</h4>
                             <ul>
                                 <li>Node.js</li>
-                                <li>Express</li>
+                                <li>Express.js</li>
+                                <li>Next.js</li>
+                                <li>Flask</li>
+                                <li>FastApi</li>
                             </ul>
                         </div>
                         <div className="skill-category">

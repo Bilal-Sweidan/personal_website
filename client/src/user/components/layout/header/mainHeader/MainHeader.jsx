@@ -47,9 +47,9 @@ const MainHeader = () => {
                     <li>
                         <Link to="projects" className="text-decoration-none text-white" onClick={() => setIsMenuOpen(false)}>projects</Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="blog" className="text-decoration-none text-white" onClick={() => setIsMenuOpen(false)}>my blog</Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to="contact" className="text-decoration-none text-white" onClick={() => setIsMenuOpen(false)}>Contact</Link>
                     </li>

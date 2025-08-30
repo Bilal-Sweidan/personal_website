@@ -84,10 +84,10 @@ const router = createBrowserRouter([
         path: "projects/:id",
         element: <ProjectsDetails />
       },
-      {
-        path: 'blog',
-        element: <UserBlog />
-      }
+      // {
+      //   path: 'blog',
+      //   element: <UserBlog />
+      // }
     ]
   },
   {
