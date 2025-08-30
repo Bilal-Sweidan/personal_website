@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { 
-    faCode, 
-    faPalette, 
-    faDatabase, 
-    faServer, 
-    faMobile, 
-    faGlobe 
+import {
+    faCode,
+    faPalette,
+    faDatabase,
+    faServer,
+    faMobile,
+    faGlobe
 } from '@fortawesome/free-solid-svg-icons';
 
 // Add icons to library
@@ -47,7 +47,7 @@ const About = () => {
                     ))}
                 </div>
             </div>
-            
+
             <div className="about-content">
                 <div className="profile-section">
                     <div className="profile-card">
@@ -77,11 +77,12 @@ const About = () => {
                             </div>
                             <h4>Frontend</h4>
                             <ul>
-                                <li>CSS3</li>
-                                <li>sass</li>
-                                <li>bootstrap</li>
-                                <li>JavaScript</li>
-                                <li>React</li>
+                                <li>React.js</li>
+                                <li>Next.js</li>
+                                <li>Bootstrap</li>
+                                <li>Tailwind css</li>
+                                <li>Material UI</li>
+                                <li>.....</li>
                             </ul>
                         </div>
                         <div className="skill-category">
@@ -128,28 +129,8 @@ const About = () => {
                     <div className="timeline">
                         <div className="timeline-item">
                             <div className="timeline-content">
-                                <h4>Front-End Developer</h4>
+                                <h4>Full Stack engineer</h4>
                                 <p className="company">Freelancer</p>
-                                <p className="duration">2021 - Present</p>
-                                <p className="description">
-                                    Leading development teams and implementing modern web solutions.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="timeline-item">
-                            <div className="timeline-content">
-                                <h4>Back-End Developer</h4>
-                                <p className="company">Freelancer</p>
-                                <p className="duration">2022 - Present</p>
-                                <p className="description">
-                                    Leading development teams and implementing modern web solutions.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="timeline-item">
-                            <div className="timeline-content">
-                                <h4>Full Stack Developer</h4>
-                                <p className="company">Startup Inc</p>
                                 <p className="duration">2022 - present</p>
                                 <p className="description">
                                     Developed and maintained web applications using modern technologies.
@@ -160,9 +141,19 @@ const About = () => {
                             <div className="timeline-content">
                                 <h4>Team Leader</h4>
                                 <p className="company">AP Team</p>
-                                <p className="duration">2024 - present</p>
+                                <p className="duration">2024 - 2025</p>
                                 <p className="description">
                                     Developer and leader in technical Team.
+                                </p>
+                            </div>
+                        </div>
+                        <div className="timeline-item">
+                            <div className="timeline-content">
+                                <h4>Full Stack engineer</h4>
+                                <p className="company">Pioneers Network company</p>
+                                <p className="duration">jun 2025 - Present</p>
+                                <p className="description">
+                                    Developed and maintained web applications using modern technologies.
                                 </p>
                             </div>
                         </div>
